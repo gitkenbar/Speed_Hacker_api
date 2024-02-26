@@ -8,7 +8,7 @@ class Game < ApplicationRecord
 
 
   # Associations
-  belongs_to :content
+  has_one :language
+  has_one :content
   belongs_to :user
-  belongs_to :language
 end
