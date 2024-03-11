@@ -1,25 +1,32 @@
 # README
+    Front end Git: https://github.com/gitkenbar/Speed_Hacker
+
+    This API includes models for the following entities:
+        Users
+        Scores
+        Games
+        
+
 
 Codefi whole program todo:
 
     Sprint 4:
-        Building a Ruby on Rails API for a Bookstore
-        Testing in Ruby on Rails using Rspec
+        Building a Ruby on Rails API for a Bookstore (Testing is a PITA!!)
     Sprint 5:
-        Authentication & Serialization
-        Fullstack Project Demonstration Part 1
         Fullstack Project Demonstration Part 2
+
         #where is 3?
         Login functionality <- is this three?
+
         Fullstack Project Demonstration Part 4
 
+        Where I should be <---
 
-
-
-    SpeedHacker 
+    SpeedHacker API
         todo:
-            jointable LanguageUsers
-
+            ? jointable LanguageUsers
+            user controller
+            sessions controller
 
 
 
