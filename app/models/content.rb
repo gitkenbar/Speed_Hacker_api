@@ -3,5 +3,5 @@ class Content < ApplicationRecord
     validates :challenge, presence:true
 
     # Associations
-    belongs_to :game
+    #belongs_to :game
 end

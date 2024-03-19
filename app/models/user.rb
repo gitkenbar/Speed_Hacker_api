@@ -4,7 +4,6 @@ class User < ApplicationRecord
     validates :password, presence:true, length: {minimum: 6, maximum: 25}
   
   #associations
-    has_many :languages
     has_many :games
     has_many :scores
   #Issue: cannot create user with multiple languages

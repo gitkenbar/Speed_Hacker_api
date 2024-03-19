@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_19_204524) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_18_193431) do
   create_table "contents", force: :cascade do |t|
     t.string "challenge"
     t.datetime "created_at", null: false
@@ -20,13 +20,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_204524) do
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.integer "content_id", null: false
-    t.integer "difficulty"
     t.integer "user_id", null: false
-    t.integer "language_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["content_id"], name: "index_games_on_content_id"
-    t.index ["language_id"], name: "index_games_on_language_id"
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
@@ -49,16 +46,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_19_204524) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
-    t.integer "language_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["language_id"], name: "index_users_on_language_id"
   end
 
   add_foreign_key "games", "contents"
-  add_foreign_key "games", "languages"
   add_foreign_key "games", "users"
   add_foreign_key "scores", "games"
   add_foreign_key "scores", "users"
-  add_foreign_key "users", "languages"
 end
