@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  get 'web/bootstrap'
   scope '/' do
-    post 'login', to: 'sessions#create'
   end
-  
+  post '/login', to: 'sessions#create'
+  resources :contents do
+    get 'contents', to: "content#content_index"
+  end
   resources :games
-  resources :user do
+  resources :users do
     get 'users', to: "user#posts_index"
   end
 

@@ -10,10 +10,10 @@
     );
 
     Content.create(
-            challenge: "success"#Faker::Lorem.sentence
+            challenge: Faker::Lorem.sentence
             );
 
-            
+
     userGames = user.games.create(
         name: Faker::Lorem.sentence,
         content_id: 1,

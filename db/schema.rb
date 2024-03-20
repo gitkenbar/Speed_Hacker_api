@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_193431) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_19_183238) do
   create_table "contents", force: :cascade do |t|
     t.string "challenge"
     t.datetime "created_at", null: false
@@ -45,9 +45,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_193431) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "password_confirmation"
   end
 
   add_foreign_key "games", "contents"
