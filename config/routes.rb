@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get 'web/bootstrap'
+  get 'web/bootstrap', to: "web#bootstrap"
   scope '/' do
   end
   post '/login', to: 'sessions#create'
-  resources :contents do
-    get 'contents', to: "content#content_index"
-  end
+  resources :contents
   resources :games
   resources :users do
     get 'users', to: "user#posts_index"
