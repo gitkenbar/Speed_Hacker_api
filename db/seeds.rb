@@ -42,6 +42,16 @@ dune = Content.create(
         Faker::Books::Dune.quote, Faker::Books::Dune.quote, Faker::Books::Dune.quote, Faker::Books::Dune.quote, Faker::Books::Dune.quote
     ])  
 
+fruitAlphabet = Content.create(
+    challenge: [
+        "Apple", "Banana", "Cherry", "DragonFruit", "Elderberry", "Fig", "Gooseberry", "Honeydew", "Ita Palm", "Java Apple", "Kiwi", "Lemon", "Mango", "Nectarine", "Orange", "Pomegranate", "Quince", "Raspberry", "Strawberry", "Tomato", "Uglifruit", "Vanilla", "Watermelon", "Xigua", "Yuzu", "Zucchini "
+    ]
+)
+
+fruitAlphabetGame = user.games.create(
+    name: "FruitAlphabetGame"
+)
+
 duneGame = user.games.create(
     name: Faker::Lorem.sentence,
     content_id: 2,
