@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope '/' do
   end
   post '/login', to: 'sessions#create'
+  resources :scores
   resources :contents
   resources :games
   resources :users do

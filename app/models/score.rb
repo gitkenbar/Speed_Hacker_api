@@ -1,5 +1,9 @@
 class Score < ApplicationRecord
+    #validators
     validates :score, presence:true
-    belongs_to :user
+    validates :game_id, presence:true
+
+    #associations
+    has_one :user
     belongs_to :game
 end
