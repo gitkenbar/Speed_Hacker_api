@@ -11,10 +11,10 @@ admin = User.create(
 ezpz = Content.create(
     challenge: ["a","b","c","d","e"]
 )
+
 testgame = admin.games.create(
     name: "ezpz",
-    content_id: 1,
-    user_id: 1
+    content_id: 1
     )
 
 5.times do |i|
@@ -31,12 +31,6 @@ archer = Content.create(
         Faker::TvShows::Archer.quote, Faker::TvShows::Archer.quote, Faker::TvShows::Archer.quote, Faker::TvShows::Archer.quote, Faker::TvShows::Archer.quote
     ])
 
-archerGame = user.games.create(
-    name: "Archer",
-    content_id: 1,
-    user_id: 2
-    );
-
 dune = Content.create(
     challenge: [
         Faker::Books::Dune.quote, Faker::Books::Dune.quote, Faker::Books::Dune.quote, Faker::Books::Dune.quote, Faker::Books::Dune.quote
@@ -48,24 +42,54 @@ fruitAlphabet = Content.create(
     ]
 )
 
-fruitAlphabetGame = user.games.create(
-    name: "FruitAlphabetGame"
-)
+archerGame = user.games.create(
+    name: "Archer",
+    content_id: 1
+    );
 
 duneGame = user.games.create(
     name: Faker::Lorem.sentence,
-    content_id: 2,
-    user_id: 1
+    content_id: 2
     );
+
+fruitAlphabetGame = user.games.create(
+    name: "FruitAlphabet",
+    content_id: 4
+)
+
              
-    5.times do |i|
-        Content.create(
-            challenge: [Faker::Lorem.sentence, Faker::Lorem.sentence, Faker::Lorem.sentence, Faker::Lorem.sentence, Faker::Lorem.sentence]
-            );
-        end
+5.times do |i|
+    Content.create(
+        challenge: [Faker::Lorem.sentence, Faker::Lorem.sentence, Faker::Lorem.sentence, Faker::Lorem.sentence, Faker::Lorem.sentence]
+        );
+    end
 
 userGames = user.games.create(
     name: Faker::Lorem.sentence,
     content_id: 3,
     user_id: 3
     );
+
+5.times do |i|
+    Score.create(
+        score: i,
+        user_id: i,
+        game_id: i
+    )
+end
+
+Score.create(
+    score: 1,
+    user_id: 1,
+    game_id: 1
+)
+Score.create(
+    score: 2,
+    user_id: 1,
+    game_id: 1
+)
+Score.create(
+    score: 3,
+    user_id: 1,
+    game_id: 1
+)

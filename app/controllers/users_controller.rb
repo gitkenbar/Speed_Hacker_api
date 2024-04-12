@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, [:show, :update, :destroy, :posts]
-  #before_action :authenticate_request, only: [:index, :show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy]
+  
+    #before_action :authenticate_request, only: [ :show, :update, :destroy]
 
   def index
     users = User.all
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: UserBlueprint.render(@user, view: normal), status: 200
+    render json: UserBlueprint.render(@user, view: :normal), status: 200
   end
 
   def create
@@ -47,7 +48,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    user = User.find(params[:id] || params[:user_id])
+    user = User.find(params[:id])
   end
 
   def user_params
