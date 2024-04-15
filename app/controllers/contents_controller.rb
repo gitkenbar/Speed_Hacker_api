@@ -1,6 +1,6 @@
 class ContentsController < ApplicationController
         before_action :set_contents, only:[:show, :update, :destroy]
-        before_action :authenticate_request
+        #before_action :authenticate_request
 
         def index
           contents = Content.all 

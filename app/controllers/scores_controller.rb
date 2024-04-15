@@ -10,16 +10,17 @@ class ScoresController < ApplicationController
   
     def show
       gameScores = Score.where(game_id: params[:id])
-      render json: gameScores, status: :ok
+      highScores = gameScores.order("score DESC").limit(10)
+      render json: highScores, status: :ok
       #render json: ScoresBlueprint.render(@score, view: :normal), status: :ok
     end
   
     def create
-      score = @current_game.scores.new(user_params)
+      score = @current_game.scores.new(score_params)
       if score.save
-        render json: @score, status: :created
+        render json: score, status: :created
       else
-        render json: @score.errors, status: :unprocessable_entity
+        render json: score.errors, status: :unprocessable_entity
       end
     end
   
@@ -51,6 +52,6 @@ class ScoresController < ApplicationController
   
     def score_params
       #permit only allows the parameters included in the argument
-      params.permit(:content)
+      params.permit(:game_id, :user_id, :score)
     end
 end
