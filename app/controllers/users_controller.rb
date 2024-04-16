@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
   
-    #before_action :authenticate_request, only: [ :show, :update, :destroy]
+  #before_action :authenticate_request, only: [ :show, :update, :destroy]
 
   def index
     users = User.all
@@ -38,11 +38,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def posts_index
-    user = User.find[:user_id]
-    user_posts = user.posts
+  def games_index
+    user = User.find(params[:user_id])
+    user_games = user.games
 
-    render json: user_posts, status: :okay
+    render json: user_games, status: :ok
   end
 
   private

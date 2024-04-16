@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :contents
   resources :games
   resources :users do
-    get 'users', to: "user#posts_index"
+    get 'usergames', to: "users#games_index"
   end
 
   
