@@ -44,11 +44,34 @@ class UsersController < ApplicationController
 
     render json: user_games, status: :ok
   end
+  def games_home
+    user = User.find(params[:user_id])
+    user_games = user.games.order("created_at DESC").limit(7)
+
+    render json: user_games, status: :ok
+  end
+
+
+  def scores_index
+    user = User.find(params[:user_id])
+    user_scores = user.scores
+
+    render json: user_scores, status: :ok
+  end
+
+  def scores_home
+    user = User.find(params[:user_id])
+    user_scores = user.scores.order("created_at DESC").limit(7)
+
+    render json: user_scores, status: :ok
+  end
+
+
 
   private
 
   def set_user
-    user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def user_params

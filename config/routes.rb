@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :games
   resources :users do
     get 'usergames', to: "users#games_index"
+    get 'homegames', to: "users#games_home"
+    get 'userscores', to: "users#scores_index"
+    get 'homescores', to: "users#scores_home"
   end
 
   
