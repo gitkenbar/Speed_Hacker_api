@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
         before_action :set_contents, only:[:show, :update, :destroy]
+        before_action :set_user, only:[:create]
         #before_action :authenticate_request
 
         def index
@@ -12,12 +13,12 @@ class ContentsController < ApplicationController
         end
 
         def create
-          content = @current_user.contents.new(user_params)
+          content = @user.Content.new(user_params)
 
           if content.save
-            render json: @content, status: :created
+            render json: content, status: :created
           else
-            render json: @content.errors, status: :unprocessable_entity
+            render json: content.errors, status: :unprocessable_entity
           end
         end
       
@@ -40,12 +41,15 @@ class ContentsController < ApplicationController
         private
       
         def set_contents
-          puts params[:id]
           @content = Content.find(params[:id])
+        end
+
+        def set_user
+          @user = User.find(params[:id])
         end
       
         def content_params
           #permit only allows the parameters included in the argument
-          params.permit(:id)
+          params.permit(:content)
         end
 end

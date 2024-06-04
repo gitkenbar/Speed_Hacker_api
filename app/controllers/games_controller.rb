@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_games, only: [:show, :update, :destroy]
-  before_action :authenticate_request, only: [:create]
+  #before_action :authenticate_request, only: [:create]
 
   def index
     games = Game.all 
@@ -12,7 +12,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    game = @current_user.games.new(user_params)
+    game = $current_user.games.new(game_params)
 
     if game.save
       render json: @game, status: :created
