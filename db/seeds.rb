@@ -12,10 +12,27 @@ ezpz = Content.create(
     challenge: ["a","b","c","d","e"]
 )
 
+alphabet = Content.create(
+    challenge: %w[a b c d e f g h i j k l m n o p q r s t u v w x y z]
+)
+
+foxy = Content.create(
+    challenge: %w[The very swift fox jumps over the lazy dog]
+)
+
 testgame = admin.games.create(
     name: "ezpz",
     content_id: 1
     )
+
+admin.games.create(
+    name: "Full Alphabet",
+    content_id: 2
+    )
+admin.games.create(
+    name: "Foxy",
+    content_id: 3
+)
 
 5.times do |i|
     user = User.create(
@@ -25,11 +42,6 @@ testgame = admin.games.create(
 end
 
 user = User.find_by(id: 2)
-    
-archer = Content.create(
-    challenge: [
-        Faker::TvShows::Archer.quote, Faker::TvShows::Archer.quote, Faker::TvShows::Archer.quote, Faker::TvShows::Archer.quote, Faker::TvShows::Archer.quote
-    ])
 
 dune = Content.create(
     challenge: [
@@ -41,11 +53,6 @@ fruitAlphabet = Content.create(
         "Apple", "Banana", "Cherry", "DragonFruit", "Elderberry", "Fig", "Gooseberry", "Honeydew", "Ita Palm", "Java Apple", "Kiwi", "Lemon", "Mango", "Nectarine", "Orange", "Pomegranate", "Quince", "Raspberry", "Strawberry", "Tomato", "Uglifruit", "Vanilla", "Watermelon", "Xigua", "Yuzu", "Zucchini"
     ]
 )
-
-archerGame = user.games.create(
-    name: "Archer",
-    content_id: 1
-    );
 
 duneGame = user.games.create(
     name: Faker::Lorem.sentence,
