@@ -12,34 +12,21 @@ class GamesController < ApplicationController
   end
 
   def create
-    new_content = Content.create(
-      challenge: params[:content]
-      )
-    game = $current_user.games.new(
-      name: params[:title], 
-      content_id: new_content.id
-      )
+    new_content = Content.create(challenge: params[:content])
+    game = $current_user.games.new(name: params[:title], content_id: new_content.id)
 
     if game.save
-      render 
-        json:   @game, 
-        status: :created
+      render json: @game, status: :created
     else
-      render 
-        json:   @game.errors, 
-        status: :unprocessable_entity
+      render json: @game.errors, status: :unprocessable_entity
     end
   end
 
   def update
     if @game.update(game_params)
-      render 
-        json: @game, 
-        status: :ok
+      render json: @game, status: :ok
     else
-      render 
-        json: @game.errors, 
-        status: :unprocessable_entity
+      render json: @game.errors, status: :unprocessable_entity
     end
   end
 
