@@ -12,7 +12,8 @@ class GamesController < ApplicationController
   end
 
   def create
-    game = $current_user.games.new(game_params)
+    new_content = Content.create(challenge: params[:content])
+    game = $current_user.games.new(name: params[:title], content_id: new_content.id)
 
     if game.save
       render json: @game, status: :created
@@ -43,8 +44,4 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
-  def game_params
-    #permit only allows the parameters included in the argument
-    params.permit(:content)
-  end
 end
