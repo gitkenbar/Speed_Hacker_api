@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   def index
     games = Game.order(created_at: :desc).page(params[:page]).per(12)
     render json: {
-      events: GamesBlueprint.render_as_hash(games, view: :normal),
+      games: GamesBlueprint.render_as_hash(games, view: :normal),
       total_pages: games.total_pages,
       current_page: games.current_page
     }, status: :ok
