@@ -3,8 +3,12 @@ class GamesController < ApplicationController
   #before_action :authenticate_request, only: [:create]
 
   def index
-    games = Game.all 
-    render json: games, status: :ok
+    games = Game.order(created_at: :desc).page(params[:page]).per(12)
+    render json: {
+      events: GamesBlueprint.render_as_hash(games, view: :normal),
+      total_pages: games.total_pages,
+      current_page: games.current_page
+    }, status: :ok
   end
 
   def show
