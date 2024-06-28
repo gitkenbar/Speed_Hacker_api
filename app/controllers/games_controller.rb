@@ -20,9 +20,9 @@ class GamesController < ApplicationController
     game = $current_user.games.new(name: params[:title], content_id: new_content.id)
 
     if game.save
-      render json: @game, status: :created
+      render json: game, status: :created
     else
-      render json: @game.errors, status: :unprocessable_entity
+      render json: game.errors, status: :unprocessable_entity
     end
   end
 
