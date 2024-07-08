@@ -3,8 +3,12 @@ class GamesController < ApplicationController
   #before_action :authenticate_request, only: [:create]
 
   def index
-    games = Game.all 
-    render json: games, status: :ok
+    games = Game.order(created_at: :desc).page(params[:page]).per(12)
+    render json: {
+      games: GamesBlueprint.render_as_hash(games, view: :normal),
+      total_pages: games.total_pages,
+      current_page: games.current_page
+    }, status: :ok
   end
 
   def show
@@ -16,9 +20,10 @@ class GamesController < ApplicationController
     game = $current_user.games.new(name: params[:title], content_id: new_content.id)
 
     if game.save
-      render json: @game, status: :created
+      render json: game, status: :created
     else
-      render json: @game.errors, status: :unprocessable_entity
+      new_content.destroy
+      render json: game.errors, status: :unprocessable_entity
     end
   end
 

@@ -3,13 +3,11 @@ class User < ApplicationRecord
 
   #validations
     validates :username, presence:true, uniqueness:true, length: {minimum: 3, maximum: 20}
+    validates :password, presence:true,
+    length: {minimum: 5, maximum: 20}
   
   #associations
     has_many :games
     has_many :scores
 
-
-  #Issue: cannot create user with multiple languages
-
-  #possible solution: Create a LanguageUser join table that can hold user_ids and language_ids
 end
