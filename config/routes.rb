@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :contents
   resources :games
   resources :flashcards
+  resources :definitions
   resources :users do
     get 'usergames', to: "users#games_index"
     get 'homegames', to: "users#games_home"
