@@ -1,4 +1,4 @@
-class GamesBlueprint < Blueprinter::Base
+class FlashcardBlueprint < Blueprinter::Base
   identifier :id
   
   view :normal do

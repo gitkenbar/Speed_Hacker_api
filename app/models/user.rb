@@ -9,5 +9,6 @@ class User < ApplicationRecord
   #associations
     has_many :games
     has_many :scores
+    has_many :flashcards
 
 end
