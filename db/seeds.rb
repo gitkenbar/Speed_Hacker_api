@@ -37,7 +37,7 @@ foxy = Content.create(
 
 fruitAlphabet = Content.create(
     challenge: %w[
-        Apple Banana Cherry DragonFruit Elderberry Fig Gooseberry Honeydew Ita Palm Java Apple Kiwi Lemon Mango Nectarine Orange Pomegranate Quince Raspberry Strawberry Tomato Uglifruit Vanilla Watermelon Xigua Yuzu Zucchini
+        Apple Banana Cherry DragonFruit Elderberry Fig Gooseberry Honeydew Ita Palm Java-Apple Kiwi Lemon Mango Nectarine Orange Pomegranate Quince Raspberry Strawberry Tomato Uglifruit Vanilla Watermelon Xigua Yuzu Zucchini
     ]
 )
 

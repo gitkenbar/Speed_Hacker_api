@@ -1,6 +1,5 @@
 class ContentsController < ApplicationController
         before_action :set_contents, only:[:show, :update, :destroy]
-        before_action :set_user, only:[:create]
         #before_action :authenticate_request
 
         def index
@@ -13,7 +12,7 @@ class ContentsController < ApplicationController
         end
 
         def create
-          content = @user.Content.new(user_params)
+          content = Content.new(params)
 
           if content.save
             render json: content, status: :created
